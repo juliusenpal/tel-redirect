@@ -6,7 +6,7 @@
     const params = new URLSearchParams(window.location.search);
     const number = params.get('number');
     if (number) {
-      window.location.href = `tel:${number}`;
+      window.location.href = `tel:{number}`;
     } else {
       document.body.innerHTML = '<p>Invalid number.</p>';
     }
