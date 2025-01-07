@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <script>
     const params = new URLSearchParams(window.location.search);
-    const number = params.get('number');
+    let number = params.get('number');
 
+    // Add +49 only if the number is too short
+    if (number.length <= 11 && !number.startsWith('+')) {
+      number = '+49' + number;
+    }
+
+    // Redirect to tel: link
     if (number) {
-      window.location.href = `callto:${number}`;
+      window.location.href = `tel:${number}`;
     } else {
       document.body.innerHTML = '<p>Invalid number.</p>';
     }
